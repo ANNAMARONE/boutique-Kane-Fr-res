@@ -71,6 +71,10 @@ class AdminController extends Controller
         Auth::logout();
         return redirect('/connexion');
     }
+
+    public function dasbord(){
+        return view('admins.admin');
+    }
 }
   
     

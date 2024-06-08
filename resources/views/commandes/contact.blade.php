@@ -8,25 +8,84 @@
 </head>
 <body>
 <div class="card">
-     <h3>Our Newsletter</h3> 
-     <form onclick="return false;"> 
-        <div class="inputbox">
-             <input type="text" name="name" class="form-control" required="required"> 
-             <span>Nom</span> 
+     <h3>Veuillez renseigner le formulaire pour confirmer la commande</h3> 
+     <form  action="{{Route('Utilisteur.ajouteInfo')}}" method="post"> 
+        @csrf
+        <div class="">
+            <label for="Prenom">Prenom</label>
+             <input type="text" name="prenom" class="form-control" required="required"> 
+           
             </div>
-             <div class="inputbox">
-                 <input type="text" name="name" class="form-control" required="required"> 
-                 <span>Prenom</span> 
+             <div class="">
+             <label for="Prenom">nom</label>
+                 <input type="text" name="nom" class="form-control" required="required"> 
+                
                 </div>
-                 <div class="inputbox"> 
-                    <input type="text" name="name" class="form-control" required="required">
-                     <span>Phone</span>
-                     </div>
-                      <button class="btn btn-danger btn-block">Send</button>
+                <div class="">
+                <label for="Prenom">Adresse</label>
+                 <input type="text" name="adresse" class="form-control" required="required"> 
+                 
+                </div>
+                 <div class=""> 
+                 <label for="Prenom">téléphone</label>
+                <input type="text" name="telephone" class="form-control" required="required">
+                     
+                  </div>
+                      <button type="submit" class="btn btn-success btn-block">envoyer</button>
                      </form> 
                     </div>
                     <style>
-                        body{height: 100vh;display: flex;justify-content: center;align-items: center;background: linear-gradient(45deg,#e43a15,#e65245)}.card{width: 400px;padding: 80px 50px;position: relative;border-radius: 20px;box-shadow: 0 5px 25px rgba(0,0,0,0.2)}.card h3{color: #111;margin-bottom: 50px;border-left: 5px solid red;padding-left: 10px;line-height: 1em}.inputbox{margin-bottom: 50px}.inputbox input{position:absolute;width: 300px;background:transparent}.inputbox input:focus{color: #495057;background-color: #fff;border-color: #e54b38;outline: 0;box-shadow: none}.inputbox span{position: relative;top: 7px;left: 1px;padding-left: 10px;display: inline-block;transition: 0.5s}.inputbox input:focus ~ span{transform: translateX(-10px) translateY(-32px);font-size: 12px}.inputbox input:valid ~ span{transform: translateX(-10px) translateY(-32px);font-size: 12px}
+                        body
+                        {
+                            height: 100vh;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: linear-gradient(#67971f)
+                        }
+                        .btn{
+                            margin-top: 10%;
+                        }
+                        .card
+                        {
+                            width: 700px;
+                                padding: 80px 50px;
+                                position: relative;
+                                border-radius: 20px;
+                                box-shadow: 0 5px 25px rgba(0,0,0,0.2)
+                            }
+                            .card h3{
+                                color: #111;
+                                margin-bottom: 50px;
+                                border-left: 5px solid red;
+                                padding-left: 10px;
+                                line-height: 1em
+                            }.inputbox
+                            {margin-bottom: 50px
+                            }.inputbox input{
+                                position:absolute;width: 600px;background:transparent
+                            }.inputbox input:focus{
+                                color: #495057;
+                                background-color: #fff;
+                                border-color: #e54b38;
+                                outline: 0;
+                                box-shadow: none
+                            }
+                            .inputbox span{
+                                position: relative;
+                                top: 7px;
+                                left: 1px;
+                                padding-left: 10px;
+                                display: inline-block;
+                                transition: 0.5s
+                            }
+                            .inputbox input:focus ~ span
+                            {
+                                transform: translateX(-10px) translateY(-32px);font-size: 12px
+                            }
+                            .inputbox input:valid ~ span{
+                                transform: translateX(-10px) translateY(-32px);font-size: 12px
+                            }
                     </style>
 </body>
 </html>

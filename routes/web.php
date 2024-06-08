@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\UtilisateurController;
 
-Route::get('/',[CategorieController::class,'ajoutecategorie'])->middleware('App\Http\Middleware\Auth');
+
+
+Route::get('/',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
+Route::get('/categorie',[CategorieController::class,'ajoutecategorie'])->middleware('App\Http\Middleware\Auth');
 Route::post('/categorie',[CategorieController::class,'categorie'])->name('Categorie.categorie');
 //affichage categorie
 Route::get('/categorie',[CategorieController::class,'AffichageCategorie']);
@@ -32,4 +36,12 @@ Route::post('/produit',[ProduitController::class,'ajouteproduit'])->name('Produi
 //afficher tout les produit dusponibles
 Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
 //afficher les detail d'un produit
-Route::get('/detailProduit/{id}',[ProduitController::class,'afficherdetail'])->name('Produit. afficherdetail'); 
+Route::get('/detailProduit/{id}',[ProduitController::class,'afficherdetail'])->name('Produit. afficherdetail');
+
+//Affichage formulaire des information de l'utilisateur
+Route::get('/formulaie',[UtilisateurController::class,'formulaire'])->name('Utilisteur.formulaire');
+//formulaire des information de l'utilisateur
+Route::post('/information',[UtilisateurController::class,'ajouteInfo'])->name('Utilisteur.ajouteInfo');
+
+//Affichage tableau de bord admin
+Route::get('/admin',[AdminController::class,'dasbord']);
