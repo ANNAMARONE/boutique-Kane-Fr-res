@@ -22,7 +22,11 @@ class User extends Authenticatable
         'email',
         'password'
     ];
-
+    public function produit()
+    {
+        return $this->hasMany(Produit::class);
+        //Ou return $this->hasMany(Post::class, 'foreign_key');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
