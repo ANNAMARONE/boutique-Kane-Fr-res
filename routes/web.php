@@ -29,4 +29,7 @@ Route::delete('/deconnexion',[AdminController::class, 'deconnexion'])->name('Use
  Route::get('/produit',[ProduitController::class,'produit'])->middleware('App\Http\Middleware\Auth');
 //ajouter un produit dans la base de donnée
 Route::post('/produit',[ProduitController::class,'ajouteproduit'])->name('Produit.ajouteproduit');
+//afficher tout les produit dusponibles
 Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
+//afficher les detail d'un produit
+Route::get('/detailProduit/{id}',[ProduitController::class,'afficherdetail'])->name('Produit. afficherdetail'); 

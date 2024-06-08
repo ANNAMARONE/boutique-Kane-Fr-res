@@ -24,5 +24,11 @@ class ProduitController extends Controller
         $produits=Produit::all();
         return view('produits.index',compact('produits'));
     }
+    public function afficherdetail($id){
+        $produits=Produit::find($id);
+        $categories=Categorie::all();
+        $categorie=Categorie::find($id);
+        return view('produits.detail',compact('produits','categories','categorie'));
+    }
     
 }
