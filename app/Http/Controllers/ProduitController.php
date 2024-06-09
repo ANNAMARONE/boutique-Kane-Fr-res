@@ -18,7 +18,7 @@ class ProduitController extends Controller
     public function ajouteproduit(request $request){
         Produit::create($request->all());
         $user = auth()->user();
-        return view('produits.index');
+        return redirect('/admin');
     }
     public function affichagerproduits(){
         $produits=Produit::all();

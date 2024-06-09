@@ -13,7 +13,7 @@
     <a class="nav-link active" aria-current="page" href="#">gestion produits</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">gestion articles</a>
+    <a class="nav-link" href="{{url('/categorie')}}">gestion categorie</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">gestion commandes</a>
@@ -28,7 +28,9 @@
                 <div class="col-md-8">
                     <div class="p-2">
                         <h4>list des produits disponible</h4>
+                        <a href="{{Route('Produit.ajouteproduit')}}">
                         <button type="button" class="btn btn-primary btn-lg">ajouter un produit</button>
+                        </a>
                     </div>
                     @foreach ($produits as $produit )
                     
@@ -44,10 +46,12 @@
                         <div>
                             <h5 class="text-grey">Prix:{{$produit->prix_unitaire}}FCFA</h5>
                         </div>
-                        <a href="">
-                        <div class="d-flex align-items-center"><i class="fa fa-edit mb-1 text-primary"></i></div>
+                        <a href="{{Route('Admin.modifProduit',$produit->id)}}">
+                        <div class="d-flex align-items-center">
+                            <button type="submit"><i class="fa fa-edit mb-1 text-primary"></i></button>
+                          </div>
                         </a>
-                       <form action="{{Route('Admin.supprimerP',$produit)}}" method="post">
+                       <form action="{{Route('Admin.supprimerP',$produit->id)}}" method="post">
                         @csrf
                         @method('DELETE')
                        
