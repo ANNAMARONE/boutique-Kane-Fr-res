@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -73,8 +74,29 @@ class AdminController extends Controller
     }
 
     public function dasbord(){
-        return view('admins.admin');
+        $produits=Produit::all();
+        return view('admins.admin',compact('produits'));
+        
     }
+    public function supprimerP($id){
+    $produit = Produit::findOrFail($id);
+    $produit->delete();
+    return redirect()->back()->with('success', 'Product deleted successfully.');
+
+    }
+    public function edit($id)
+{
+    $produit = Produit::findOrFail($id);
+    return view('products.edit', compact('produit'));
+}
+
+public function update(Request $request, $id)
+{
+    $produit = Produit::findOrFail($id);
+    $produit->update($request->all());
+    return redirect('products')->with('success', 'Product updated successfully.');
+}
+ 
 }
   
     

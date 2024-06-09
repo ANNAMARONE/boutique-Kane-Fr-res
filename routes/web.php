@@ -37,6 +37,9 @@ Route::post('/produit',[ProduitController::class,'ajouteproduit'])->name('Produi
 Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
 //afficher les detail d'un produit
 Route::get('/detailProduit/{id}',[ProduitController::class,'afficherdetail'])->name('Produit. afficherdetail');
+//supprimer un produit
+Route::delete('/supProduit/{id}',[AdminController::class,'supprimerP'])->name('Admin.supprimerP');
+//modifier un produit
 
 //Affichage formulaire des information de l'utilisateur
 Route::get('/formulaie',[UtilisateurController::class,'formulaire'])->name('Utilisteur.formulaire');
