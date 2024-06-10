@@ -13,6 +13,6 @@ class UtilisateurController extends Controller
     }
     public function ajouteInfo(Request $request){
         Utilisateur::create($request->all());
-        return view('commandes.valide');
+        return redirect('/commande')->with('success');
     }
 }

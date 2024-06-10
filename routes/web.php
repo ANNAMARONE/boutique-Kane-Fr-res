@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\UtilisateurController;
 
@@ -54,3 +55,9 @@ Route::post('/information',[UtilisateurController::class,'ajouteInfo'])->name('U
 
 //Affichage tableau de bord admin
 Route::get('/admin',[AdminController::class,'dasbord']);
+
+Route::get('/commande',[CommandeController::class,'valide']);
+Route::get('/commande/{id}',[CommandeController::class,'affichercommande'])->name('Commmande.affichercommande');
+Route::get('/utilisateurcommande/{id}',[CommandeController::class,'afficherutilisateur']);
+
+Route::post('/validecommande',[CommandeController::class,'validecommande'])->name('Commmande.validecommande');

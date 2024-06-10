@@ -72,7 +72,7 @@
                         <P class="fs-4 fw-bold">NOM:{{$produits->designation}}</P>
                         <p class="fs-4 fw-bold">Prix:{{$produits->prix_unitaire}} FCFA</p>
                         <p class="text-muted mb-4">{{$produits->etat_produit}}</p>
-                        <a href="{{Route('Utilisteur.formulaire')}}">
+                        <a href="{{Route('Utilisteur.formulaire',$produits->id)}}">
                         <div class="btn btn-success px-4">ACHETEZ MAINTENANT</div>
                         </a>
                     </div>

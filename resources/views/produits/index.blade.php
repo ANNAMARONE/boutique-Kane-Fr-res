@@ -49,7 +49,7 @@
                        
                </figcaption>
                <div class="bottom-wrap">
-                   <a href="#" class="btn btn-success float-right" data-abc="true">acheter</a>
+                   <a href="{{Route('Commmande.affichercommande',$produit->id)}}" class="btn btn-success float-right" data-abc="true">acheter</a>
                    <div class="price-wrap">
                        <span class="price h5">{{$produit->prix_unitaire}}:fcfa</span> <br> <small class="text-success">{{$produit->etat_produit}}</small>
                    </div>
