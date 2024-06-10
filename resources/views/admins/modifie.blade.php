@@ -8,20 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">gestion produits</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{url('/categorie')}}">gestion categorie</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">gestion commandes</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul>
   <p>{{Auth::User()->prenom}}</p>
 <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
@@ -30,7 +16,7 @@
            
             <div class="card">
                 <h5 class="text-center mb-4">Ajouter les produits</h5>
-                <form class="form-card" action="{{Route('Produit.ajouteproduit')}}" method="post" >
+                <form class="form-card" action="{{Route('Admin.update',$produit->id)}}" method="post" >
                 @csrf
                 @method('POST')
                 
@@ -40,8 +26,8 @@
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> 
                             <label class="form-control-label px-3">catégorie<span class="text-danger"> *</span></label> 
-                            <select class="form-control" name="categorie_id" id="libelle">
-        <option value="">Sélectionnez le type</option>
+                            <select class="form-control" name="categorie_id" id="libelle" value="{{$produit->categorie_id}}">
+       
         @foreach ( $categorie as $type )
             <option value="{{ $type->id}}" {{ old('libelle') == $type ? 'selected' : '' }}>
              {{ $type->libelle}}
@@ -52,25 +38,25 @@
                         </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> 
                             <label class="form-control-label px-3">designation<span class="text-danger"> *</span></label> 
-                            <input type="text" id="lname" name="designation" onblur="validate(2)"> 
+                            <input type="text" id="lname" name="designation" value="{{$produit->designation}}" onblur="validate(2)"> 
                         </div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">
                              <label class="form-control-label px-3">prix<span class="text-danger"> *</span></label> 
-                             <input type="number" id="email" name="prix_unitaire" placeholder="" onblur="validate(3)"> 
+                             <input type="number" id="email" name="prix_unitaire" placeholder="" value="{{$produit->prix_unitaire}}" onblur="validate(3)"> 
                             </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> 
                             <label class="form-control-label px-3">references<span class="text-danger"> *</span></label>
-                             <input type="text" id="mob" name="reference" placeholder="" onblur="validate(4)"> 
+                             <input type="text" id="mob" name="reference" placeholder="" value="{{$produit->reference}}" onblur="validate(4)"> 
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                             <label class="form-control-label px-3">image<span class="text-danger"> *</span></label>
-                             <input type="text" id="mob" name="image" placeholder="" onblur="validate(4)"> 
+                             <input type="text" id="mob" name="image" placeholder="" value="{{$produit->image}}" onblur="validate(4)"> 
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                             <label class="form-control-label px-3">etat produit<span class="text-danger"> *</span></label>
-                             <select name="etat_produit" id="etat_produit">
+                             <select name="etat_produit" id="etat_produit" value="{{$produit->etat_produit}}">
                           <option value="disponible" {{old('etat_produit')=='disponible'? 'selected':''}}>disponible</option>
                           <option value="en rupture" {{old('etat_produit')=='en rupture'? 'elected':''}}>en rupture</option>
                           <option value="en stock" {{old('etat_produit')=='en stock'? 'selected':''}}>en stock</option>

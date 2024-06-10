@@ -18,11 +18,17 @@ class ProduitController extends Controller
     public function ajouteproduit(request $request){
         Produit::create($request->all());
         $user = auth()->user();
-        return view('produits.index');
+        return redirect('/admin');
     }
     public function affichagerproduits(){
         $produits=Produit::all();
         return view('produits.index',compact('produits'));
+    }
+    public function afficherdetail($id){
+        $produits=Produit::find($id);
+        $categories=Categorie::all();
+        $categorie=Categorie::find($id);
+        return view('produits.detail',compact('produits','categories','categorie'));
     }
     
 }

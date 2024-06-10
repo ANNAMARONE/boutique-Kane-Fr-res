@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Produit;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -59,7 +61,7 @@ class AdminController extends Controller
             'password'=>$request->password,
         ];
         if(Auth::attempt($credentials)){
-           return view('produits.produit')->with('success','Connexion');
+           return redirect('/produit')->with('success','Connexion');
 
         }else{
             return back()->with('error','Email ou mots de passe incorrect');
@@ -71,6 +73,33 @@ class AdminController extends Controller
         Auth::logout();
         return redirect('/connexion');
     }
+
+    public function dasbord(){
+        $produits=Produit::all();
+        return view('admins.admin',compact('produits'));
+        
+    }
+    public function supprimerP($id){
+    $produit = Produit::findOrFail($id);
+    $produit->delete();
+    return redirect()->back()->with('success', 'Product deleted successfully.');
+
+    }
+    public function modifProduit($id)
+{
+    $categorie=Categorie::All();
+    $produit = Produit::findOrFail($id);
+    $user = auth()->user();
+    return view('admins.modifie', compact('produit','user','categorie'));
+}
+
+public function update(Request $request, $id)
+{
+    $produit = Produit::findOrFail($id);
+    $produit->update($request->all());
+    return redirect('/admin')->with('success', 'Product updated successfully.');
+}
+ 
 }
   
     

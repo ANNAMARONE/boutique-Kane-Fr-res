@@ -8,26 +8,29 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#" onclick="showSection('section2')">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">gestion produits</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" onclick="showSection('section1')">ajouter un categorie</a>
+    <a class="nav-link" href="{{url('/categorie')}}">gestion categorie</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">gestion commandes</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   </li>
 </ul>
+<style>
+  body {
+  font-family: 'Manrope', sans-serif;
+  background:#eee;
+}
+</style>
 <section  id="section1" class="section">
 
 <div class="container-fluid mt-3">
-  <h3>bienvenue</h3>
- 
 </div>
 <div class="container mt-3">
  

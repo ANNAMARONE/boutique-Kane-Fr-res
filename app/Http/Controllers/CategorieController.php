@@ -17,21 +17,17 @@ class CategorieController extends Controller
        return redirect()->back();
     }
    public function editcategorie($id){
-    $categorie=Categorie::find($id);
+    $categorie=Categorie::findOrFail($id);
     return view('categories.modifier',compact('categorie'));
    }
     public function modifier(request $request,$id){
-        $categorie = Categorie::find($id);
-        if ($categorie) {
-
-            $categorie->update($request->all());
-            
-            return redirect()->route('categories.categorie')->with('success', 'Catégorie mise à jour avec succès');
-        } else {
-            return redirect()->route('categories.categorie')->with('error', 'Catégorie non trouvée');
-        }
+        $categorie = Categorie::findOrFail($id);
+        $categorie->update($request->all());
+        return redirect('/categorie')->with('success', 'Product updated successfully.');
         
     }
+
+   
     public function suppresion($id){
         $categorie=Categorie::find($id);
         $categorie->delete();

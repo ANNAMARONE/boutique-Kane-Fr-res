@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('montant_total');
             $table->enum('etat_commande',['validé','annulé','en cours']);
             $table->unsignedBigInteger('utilisateur_id');
-            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs')->onDelete('cascade');
+            $table->foreign('utilisateur_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
