@@ -22,7 +22,7 @@
         {{ session('error') }}
     </div>
 @endif
-  <form action="{{Route('login')}}" method="post">
+  <form action="{{route('Utilisateur.seconnecter')}}" method="post">
     @csrf
    @Method('POST')
     <div class="mb-3 mt-3">
@@ -34,7 +34,7 @@
     </div>
     <div class="mb-3">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" value="{{old('password')}}">
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="{{old('password')}}">
       @error('password')
     <span class="text-danger">{{$message}}</span>
     @enderror

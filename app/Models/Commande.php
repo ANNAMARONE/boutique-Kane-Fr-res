@@ -12,10 +12,16 @@ class Commande extends Model
         'reference',
         'montant_total',
         'etat_commande',
-        'utilisateur_id'
+        'user_id'
     ];
     public function produits()
     {
         return $this->belongsToMany(Produit::class);
     }
+    
+    public function utilisateur()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
+

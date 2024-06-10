@@ -27,7 +27,9 @@ class Produit extends Model
     {
         return $this->belongsTo(Categorie::class);
     }
-   public function commande(){ 
-        return  $this -> AppartientToMany ( Commande::class ); 
+    public function commande()
+    {
+        return $this->belongsToMany(Commande::class);
     }
+    
 }

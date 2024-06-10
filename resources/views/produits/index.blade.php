@@ -4,11 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Document</title>
 </head>
 <body>
+    <header>
+    <body class="bg-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+          <img src="https://i.imgur.com/PSXxjNY.png" alt="" width="35" class="rounded-circle">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto">
+          <a class="nav-link active border-bottom" aria-current="page" href="#">Accueil</a>
+          <a class="nav-link" aria-current="page" href="#">Produits</a>
+        </div>
+        <div class="d-flex">
+            <div class="rounded-pill bg-light d-flex">
+                <a href="{{Route('login')}}">
+            <button type="button" class="btn btn-success">Se connecter</button>
+            </a>
+            <form action="{{url('/deconnexion')}}" method="post">
+                @csrf
+                @method('DELETE')
+            <button type="submit" class="btn btn-danger">deconnexion</button>
+            </form>
+
+            </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+<router-outlet></router-outlet>
+</body>
+    </header>
 <div class="container">
   	
 

@@ -8,28 +8,48 @@
 </head>
 <body>
 <div class="card">
-     <h3>Veuillez renseigner le formulaire pour confirmer la commande</h3> 
+     <h3>créer un compte</h3> 
      <form  action="{{Route('Utilisteur.ajouteInfo')}}" method="post"> 
         @csrf
         <div class="">
             <label for="Prenom">Prenom</label>
-             <input type="text" name="prenom" class="form-control" required="required"> 
-           
+             <input type="text" name="prenom" class="form-control" > 
+           @error('prenom')
+           <span class="text-danger">{{$message}}</span>
+           @enderror
             </div>
              <div class="">
              <label for="Prenom">nom</label>
-                 <input type="text" name="nom" class="form-control" required="required"> 
-                
+                 <input type="text" name="nom" class="form-control"> 
+                 @error('nom')
+           <span class="text-danger">{{$message}}</span>
+           @enderror
                 </div>
                 <div class="">
                 <label for="Prenom">Adresse</label>
-                 <input type="text" name="adresse" class="form-control" required="required"> 
-                 
+                 <input type="text" name="adresse" class="form-control"> 
+                 @error('adresse')
+           <span class="text-danger">{{$message}}</span>
+           @enderror
                 </div>
                  <div class=""> 
                  <label for="Prenom">téléphone</label>
-                <input type="text" name="telephone" class="form-control" required="required">
-                     
+                <input type="text" name="telephone" class="form-control" >
+                @error('telephone')
+           <span class="text-danger">{{$message}}</span>
+           @enderror
+                <div class=""> 
+                 <label for="Prenom">email</label>
+                <input type="text" name="email" class="form-control">
+                @error('email')
+           <span class="text-danger">{{$message}}</span>
+           @enderror
+                <div class=""> 
+                 <label for="Prenom">Mot de passe</label>
+                <input type="text" name="password" class="form-control">
+                @error('password')
+           <span class="text-danger">{{$message}}</span>
+           @enderror
                   </div>
                       <button type="submit" class="btn btn-success btn-block">envoyer</button>
                      </form> 

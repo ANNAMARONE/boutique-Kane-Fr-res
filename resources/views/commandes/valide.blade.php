@@ -8,10 +8,11 @@
 </head>
 <body>
 <div class="card">
+<p>Welcome, {{ Auth::user()->nom }}</p>
      <h3>Veuillez confrimer votre commande</h3> 
      <form  action="{{Route('Commmande.validecommande')}}" method="post"> 
         @csrf
-        <input type="hidden" id="lname" name="utilisateur_id" value="{{$utilisateur->id}}"> 
+        <input type="hidden" id="lname" name="user_id" value="{{ Auth::user()->id }}"> 
         <div class="">
             <label for="Prenom">Reference</label>
              <input type="text" name="reference" class="form-control" value="{{$produits->reference}}" required="required"> 

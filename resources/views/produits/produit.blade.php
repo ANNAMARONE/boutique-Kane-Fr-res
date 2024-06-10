@@ -8,6 +8,20 @@
     <title>Document</title>
 </head>
 <body>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">gestion produits</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{url('/categorie')}}">gestion categorie</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">gestion commandes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
   <p>{{Auth::User()->prenom}}</p>
 <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
