@@ -22,6 +22,10 @@ class User extends Authenticatable
         'email',
         'password'
     ];
+    public function role()
+{
+    return $this->belongsTo(Role::class, 'role_id');
+}
     public function produit()
     {
         return $this->hasMany(Produit::class);
