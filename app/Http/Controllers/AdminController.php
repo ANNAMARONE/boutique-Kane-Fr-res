@@ -60,6 +60,17 @@ class AdminController extends Controller
             'email' => $request->email,
             'password'=>$request->password,
         ];
+        $user=Auth::user();
+        // if($user->role_id==='admin'){
+        //     return redirect()->intended('/admin');
+        // } else{
+        //     return redirect()->intended('/');
+        // }
+        if ($user !== null && property_exists($user, 'role_id')) {
+            echo $user->role_id;
+        } else {
+            echo "User is null or role_id does not exist.";
+        }
         if(Auth::attempt($credentials)){
            return redirect('/produit')->with('success','Connexion');
 

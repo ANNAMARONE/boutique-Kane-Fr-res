@@ -43,7 +43,9 @@
 </body>
     </header>
 <div class="container">
-  	
+
+<p>Bienvenue <br>
+{{Auth::User()->prenom}} {{Auth::User()->nom}}</p>
 
       <div class="row">
     
