@@ -7,7 +7,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\UtilisateurController;
-use App\Http\Middleware\CheckRole;
+
 
 Route::get('/',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
 
@@ -27,14 +27,13 @@ Route::post('/connexion',[AdminController::class, 'seconnecter'])->name('login')
 //faire la de connexion
 Route::delete('/deconnexion',[AdminController::class, 'deconnexion'])->name('User.deconnexion');
 //supprimer un produit
-
-
+Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
+Route::get('/produit',[ProduitController::class,'produit']);
 Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form');
 Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter');
-Route::get('/commande', [CommandeController::class, 'afficherCommande'])->name('commande.afficher');
+Route::get('/commande', [CommandeController::class, 'afficherCommande'])->name('commande.afficher')->middleware('auth');
 
-
-Route::group(['middleware' => 'role:admin'], function () {
+Route::middleware('App\Http\Middleware\CheckRole:admin')->group(function(){
     Route::get('/categorie',[CategorieController::class,'ajoutecategorie']);
     Route::post('/categorie',[CategorieController::class,'categorie'])->name('Categorie.categorie');
     //affichage categorie
@@ -47,11 +46,11 @@ Route::group(['middleware' => 'role:admin'], function () {
     //afficher le formulairesn de cration de compte
     
     //afficher le formulaire ajouter de produit
-     Route::get('/produit',[ProduitController::class,'produit']);
+    
     //ajouter un produit dans la base de donnée
     Route::post('/produit',[ProduitController::class,'ajouteproduit'])->name('Produit.ajouteproduit');
     //afficher tout les produit dusponibles
-    Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
+    
     Route::delete('/supProduit/{id}',[AdminController::class,'supprimerP'])->name('Admin.supprimerP');
 //modifier un produit
 Route::get('/modifie/{id}/edit',[AdminController::class,'modifProduit'])->name('Admin.modifProduit');
