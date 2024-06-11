@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\CategorieController;
@@ -69,3 +70,9 @@ Route::get('/utilisconnexion',[UtilisateurController::class,'useconnecter']);
 //faire la connexion
 Route::post('/utilisconnexion',[UtilisateurController::class, 'uconnexion'])->name('Utilisateur.seconnecter');
 //faire la de connexion
+
+// Route::post('/ajouteproduit',[CommandeController::class,'ajoutepanier'])->name('ajoutepanier');
+// routes/web.php
+
+Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form');
+Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter');

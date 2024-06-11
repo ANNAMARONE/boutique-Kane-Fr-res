@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
-    protected $fillable=[
-        'reference',
-        'montant_total',
-        'etat_commande',
-        'user_id'
-    ];
+    protected $fillable = ['user_id', 'reference', 'montant_total', 'etat_commande'];
+
     public function produits()
     {
-        return $this->belongsToMany(Produit::class);
+        return $this->belongsToMany(Produit::class, 'commande_produit')
+                    ->withPivot('quantite')
+                    ->withTimestamps();
     }
     
     public function utilisateur()
