@@ -29,8 +29,8 @@ Route::delete('/deconnexion',[AdminController::class, 'deconnexion'])->name('Use
 //supprimer un produit
 Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
 Route::get('/produit',[ProduitController::class,'produit']);
-Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form');
-Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter');
+Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form')->middleware('auth');
+Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter')->middleware('auth');
 Route::get('/commande', [CommandeController::class, 'afficherCommande'])->name('commande.afficher')->middleware('auth');
 
 Route::middleware('App\Http\Middleware\CheckRole:admin')->group(function(){
@@ -43,11 +43,7 @@ Route::middleware('App\Http\Middleware\CheckRole:admin')->group(function(){
     //modifier un categorie
     Route::delete('/supcategorie/{id}',[CategorieController::class,'suppresion'])->name('Categorie.suppresion');
     Route::post('/categories/{id}',[CategorieController::class,'modifier'])->name('Categorie.modifier');
-    //afficher le formulairesn de cration de compte
-    
-    //afficher le formulaire ajouter de produit
-    
-    //ajouter un produit dans la base de donnée
+
     Route::post('/produit',[ProduitController::class,'ajouteproduit'])->name('Produit.ajouteproduit');
     //afficher tout les produit dusponibles
     
