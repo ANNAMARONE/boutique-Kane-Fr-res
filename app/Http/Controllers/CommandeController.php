@@ -10,28 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommandeController extends Controller
 {
-    public function valide($id){
-        $user = Auth::user();
-        $produits=Produit::find($id);
-        return view('commandes.valide',compact('produits','user'));
-    }
-    public function affichercommande($id){
-        $user = Auth::user();
-        $produits=Produit::find($id);
-        return view('commandes.valide',compact('produits','user'));
-    }
-    public function afficherutilisateur($id){
-        
-        return view('commandes.valide',compact('utilisateur'));
-    }
-    //
-  
-public function ajoutepanier(Request $request){
-    // $commande=Commande::create($request->all());
-    // $commande->produits()->attach($request->produits);
-    // return redirect('/')->with('success', 'Product deleted successfully.');
-
-}
+ 
 public function showAjouterForm()
     {
         $produits = Produit::all();
@@ -51,30 +30,20 @@ public function showAjouterForm()
         \DB::beginTransaction();
 
         try {
-            // Crée une nouvelle commande ou récupère une commande existante
             $commande = Commande::firstOrCreate(
                 ['user_id' => $request->user()->id, 'etat_commande' => 'en cours'],
                 ['reference' => 'REF-' . strtoupper(uniqid()), 'montant_total' => 0]
             );
 
-            // Vérifier si la commande a été créée ou récupérée correctement
             if (!$commande) {
                 throw new \Exception('Failed to create or retrieve the order.');
             }
-
-            // Récupérer le produit
             $produit = Produit::find($produitId);
-
-            // Vérifier si le produit a été trouvé
             if (!$produit) {
                 throw new \Exception('Product not found.');
             }
-
-            // Mettre à jour le montant total de la commande
             $montantTotal = $commande->montant_total + ($produit->prix_unitaire * $quantite);
             $commande->update(['montant_total' => $montantTotal]);
-
-            // Ajouter le produit à la commande via la table pivot
             $commande->produits()->attach($produitId, ['quantite' => $quantite]);
 
             \DB::commit();
@@ -85,6 +54,17 @@ public function showAjouterForm()
 
             return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'ajout du produit au panier: ' . $e->getMessage());
         }
+    }
+    public function afficherCommande()
+    {
+       $user_id=Auth::id();
+       $commandes=Commande::where('user_id',$user_id)->get();
+
+        if (!$commandes) {
+            return redirect()->view('commandes.afficher',compact('commande'))->with('error', 'Commande non trouvée.');
+        }
+
+        return view('commandes.afficher', compact('commandes'));
     }
 }
 

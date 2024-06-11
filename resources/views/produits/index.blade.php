@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav me-auto">
           <a class="nav-link active border-bottom" aria-current="page" href="#">Accueil</a>
-          <a class="nav-link" aria-current="page" href="#">Produits</a>
+          <a class="nav-link" aria-current="page" href="{{Route('commande.afficher')}}">Panier</a>
         </div>
         <div class="d-flex">
             <div class="rounded-pill bg-light d-flex">
