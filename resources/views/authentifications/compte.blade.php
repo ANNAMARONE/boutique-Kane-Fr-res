@@ -45,7 +45,6 @@
     </div>
     <div class="form-check mb-3">
       <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember"> Remember me <br>
         <a href="{{url('/connexion')}}">se connecter</a>
       </label>
     </div>
