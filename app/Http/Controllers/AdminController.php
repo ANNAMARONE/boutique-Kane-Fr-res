@@ -82,7 +82,7 @@ class AdminController extends Controller
     }
     public function deconnexion(){
         Auth::logout();
-        return redirect('/connexion');
+        return redirect('/');
     }
 
     public function dasbord(){
