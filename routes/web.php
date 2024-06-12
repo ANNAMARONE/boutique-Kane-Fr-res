@@ -16,7 +16,7 @@ Route::get('/detailProduit/{id}',[ProduitController::class,'afficherdetail'])->n
 //=============================================================================================================
 
 
-Route::get('/compte',[AdminController::class,'compte'])->middleware('auth');
+Route::get('/compte',[AdminController::class,'compte']);
 //creation de compte
 Route::post('/CreationCompt',[AdminController::class, 'CreationCompt'])->name('User.CreationCompt');
 //afficher le fomulaire de connexion
