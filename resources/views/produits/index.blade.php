@@ -46,7 +46,16 @@
 
 
       <div class="row">
-    
+      @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     @foreach ( $produits as $produit )
     
    
@@ -82,13 +91,20 @@
                        
                </figcaption>
                <div class="bottom-wrap">
-               <form action="{{Route('panier.ajouter')}}" method="post">
-                            @csrf
-                           
-                           <input class="btn btn-success float-right" type="submit" value="acheter"> 
-                        </form>
+                            
+                            
                    <div class="price-wrap">
                        <span class="price h5">{{$produit->prix_unitaire}}:fcfa</span> <br> <small class="text-success">{{$produit->etat_produit}}</small>
+                    
+    <form action="{{ route('panier.ajouter') }}" method="POST">
+        @csrf
+<div class="form-group">
+    <input type="hidden" name="produit_id" value="{{ $produit->id }}">
+    <label for="quantite">Quantité</label>
+    <input type="number" name="quantite" id="quantite" class="form-control" min="1" required>
+</div>
+        <button type="submit" class="btn btn-primary">Ajouter au Panier</button>
+    </form>
                    </div>
                </div> 
            </figure>
