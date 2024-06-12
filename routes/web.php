@@ -29,11 +29,11 @@ Route::delete('/deconnexion',[AdminController::class, 'deconnexion'])->name('Use
 //supprimer un produit
 Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
 Route::get('/produit',[ProduitController::class,'produit']);
-Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form')->middleware('auth');
-Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter')->middleware('auth');
+Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form');
+Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter');
 Route::get('/commande', [CommandeController::class, 'afficherCommande'])->name('commande.afficher')->middleware('auth');
 
-Route::middleware('App\Http\Middleware\CheckRole:admin')->group(function(){
+
     Route::get('/categorie',[CategorieController::class,'ajoutecategorie']);
     Route::post('/categorie',[CategorieController::class,'categorie'])->name('Categorie.categorie');
     //affichage categorie
@@ -59,4 +59,3 @@ Route::get('/admin',[AdminController::class,'dasbord']);
 //Affichage formulaire des information de l'utilisateur
 
 //formulaire des information de l'utilisateur
-});

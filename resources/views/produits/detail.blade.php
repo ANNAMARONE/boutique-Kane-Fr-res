@@ -62,7 +62,7 @@
                 <div class="d-lg-flex">
                  
                     <div class="d-flex align-items-center ms-lg-auto mt-lg-0 mt-3 pe-2">
-                       
+               
                         <div class="d-flex flex-column ps-2">
                             <p class="fw-bold">ajouter le:{{$produits->created_at}}</p>
                             <p class="text-muted">ETAT:{{$produits->etat_produit}}</p>
@@ -93,9 +93,8 @@
     @endif
     <form action="{{ route('panier.ajouter') }}" method="POST">
         @csrf
-        
-
 <div class="form-group">
+<input type="hidden" name="produit_id" value="{{ $produits->id }}">
     <label for="quantite">Quantité</label>
     <input type="number" name="quantite" id="quantite" class="form-control" min="1" required>
 </div>
