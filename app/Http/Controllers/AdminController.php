@@ -60,24 +60,23 @@ class AdminController extends Controller
             'email' => $request->email,
             'password'=>$request->password,
         ];
-        $user=Auth::user();
-        // if($user->role_id==='admin'){
-        //     return redirect()->intended('/admin');
-        // } else{
-        //     return redirect()->intended('/');
-        // }
-        if ($user !== null && property_exists($user, 'role_id')) {
-            echo $user->role_id;
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentification réussie
+            $user = Auth::user();
+    
+            if ($user->role_id === 1) { // Supposons que 1 représente l'admin
+                return redirect()->intended('/admin');
+            } else {
+                return redirect()->intended('/');
+            }
         } else {
-            echo "User is null or role_id does not exist.";
+            // Authentification échouée
+            return redirect()->back()->withErrors([
+                'email' => 'Les informations de connexion ne sont pas correctes.',
+            ]);
         }
-        if(Auth::attempt($credentials)){
-           return redirect('/produit')->with('success','Connexion');
-
-        }else{
-            return back()->with('error','Email ou mots de passe incorrect');
-        }
-
 
     }
     public function deconnexion(){
