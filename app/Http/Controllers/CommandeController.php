@@ -60,12 +60,14 @@ public function showAjouterForm()
        $user_id=Auth::id();
        $commandes=Commande::where('user_id',$user_id)->get();
 
-        if (!$commandes) {
-            return redirect()->view('commandes.afficher',compact('commande'))->with('error', 'Commande non trouvée.');
-        }
-
-        return view('commandes.afficher', compact('commandes'));
+       
+            return view('commandes.afficher', compact('commandes'));
+     
+        
     }
+   public function erreur(){
+    return view('commandes.erreur');
+   }
 }
 
 
