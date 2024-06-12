@@ -28,13 +28,12 @@ Route::post('/connexion',[AdminController::class, 'seconnecter'])->name('login')
 Route::delete('/deconnexion',[AdminController::class, 'deconnexion'])->name('User.deconnexion');
 //supprimer un produit
 Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
-
+Route::get('/produit',[ProduitController::class,'produit']);
 Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form')->middleware('auth');
 Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter')->middleware('auth');
 Route::get('/commande', [CommandeController::class, 'afficherCommande'])->name('commande.afficher')->middleware('auth');
 
 Route::middleware('App\Http\Middleware\CheckRole:admin')->group(function(){
-    Route::get('/produit',[ProduitController::class,'produit']);
     Route::get('/categorie',[CategorieController::class,'ajoutecategorie']);
     Route::post('/categorie',[CategorieController::class,'categorie'])->name('Categorie.categorie');
     //affichage categorie

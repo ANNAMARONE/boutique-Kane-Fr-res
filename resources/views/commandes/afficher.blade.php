@@ -10,6 +10,11 @@
 </head>
 <body>
 <div class="container">
+
+   
+    @if($commandes->isEmpty())
+    <h1>votre commande est vide</h1>
+    @else
     <h2>Détails de la Commande</h2>
     @if(session()->has('message'))
         <div class="alert alert-success">
@@ -21,6 +26,7 @@
            
         </div>
         <div class="card-body">
+
              @foreach ($commandes as $commande )
              
             
@@ -38,6 +44,7 @@
                     </li>
                 @endforeach
             </ul>
+            @endif
         </div>
     </div>
 </div>
