@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
         <!-- Core theme CSS (includes Bootstrap)-->
-        
+        <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -27,7 +27,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Acceuil</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Accueil</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">À propos</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
@@ -40,33 +40,35 @@
                         </li>
                     </ul>
                     <div class="button-div">
-                    
-    <button class="signup-button"><a href="{{Route('login')}}">se connecter</a></button>
-    
-    
-    <button class="login-button"><a href="{{Route('compte')}}">s'inscrire</a></button>
-    
-    
+         
+    <form action="{{url('/deconnexion')}}" method="post">
+                @csrf
+                @method('DELETE')
+    <button class="login-button">deconnection</button>
+    </form>
     
     
 </div>
                     <form class="d-flex" action="{{Route('commande.afficher')}}">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                           panier
-                            
+                            Cart
+                           
                         </button>
                     </form>
                   
                 </div>
             </div>
         </nav>
+
+        <p>Bienvenue{{Auth::User()->nom}} {{Auth::User()->prenom}}</p>
+        
         <!-- Header-->
         <header  class="bg py-5">
             <div id="header" class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <h1 class="display-4 fw-bolder">Kane & frése</h1>
+                    <p class="lead fw-normal text-white-50 mb-0"> spécialisés dans le vente de produits alimentaires</p>
                 </div>
                 <div>
                     <img src="image/background.png" alt="">
@@ -74,7 +76,6 @@
             </div>
         </header>
         <!-- Section-->
-       
         <div id="container1" class="container">
 
         <div class="col-lg-3 mb-lg-0 mb-2">
@@ -91,7 +92,7 @@
                         @foreach ($categories as $categorie)
                         
                        
-                        <li><a class="dropdown-item" href="{{Route('produits.parCategories', $categorie->id)}}">{{$categorie->libelle}}</a></li>
+                        <li><a class="dropdown-item" href="{{Route('produits.parCategorie', $categorie->id)}}">{{$categorie->libelle}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -111,12 +112,9 @@
 
 
  <div class="col-md-4">
-    
      <figure class="card card-product-grid card-lg">
-    
      <button id="etat" type="button" class="btn btn-dark">{{$produit->etat_produit}}</button>
          <a href="{{Route('Produit. afficherdetail',$produit->id)}}" class="img-wrap" data-abc="true">
-            
           <img src="{{$produit->image}}"></a>
          <figcaption class="info-wrap">
                     <div class="row">
@@ -158,7 +156,7 @@
 <label for="quantite">Quantité</label>
 <input type="number" name="quantite" id="quantite" class="form-control" min="1" required>
 </div>
-  <button type="submit" class="btn" style="background-color:#77A713;color:white">Ajouter au Panier</button>
+  <button  type="submit" class="btn" style="background-color:#77A713;color:white">Ajouter au Panier</button>
 </form>
              </div>
          </div> 

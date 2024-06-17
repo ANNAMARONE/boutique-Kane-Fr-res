@@ -16,7 +16,7 @@ Route::get('/detailProduit/{id}',[ProduitController::class,'afficherdetail'])->n
 //=============================================================================================================
 
 
-Route::get('/compte',[AdminController::class,'compte']);
+Route::get('/compte',[AdminController::class,'compte'])->name('compte');
 //creation de compte
 Route::post('/CreationCompt',[AdminController::class, 'CreationCompt'])->name('User.CreationCompt');
 //afficher le fomulaire de connexion
@@ -27,7 +27,7 @@ Route::post('/connexion',[AdminController::class, 'seconnecter'])->name('login')
 //faire la de connexion
 Route::delete('/deconnexion',[AdminController::class, 'deconnexion'])->name('User.deconnexion');
 //supprimer un produit
-Route::get('/produits',[ProduitController::class,'affichagerproduits'])->name('Produit. affichagerproduits');
+Route::get('/produits',[ProduitController::class,'affichagerproduits2'])->name('Produit. affichagerproduits');
 Route::get('/produit',[ProduitController::class,'produit']);
 Route::get('/panier/ajouter', [CommandeController::class, 'showAjouterForm'])->name('panier.ajouter.form')->middleware('auth');
 Route::post('/panier/ajouter', [CommandeController::class, 'ajouter'])->name('panier.ajouter')->middleware('auth');
@@ -60,3 +60,6 @@ Route::get('/admin',[AdminController::class,'dasbord']);
 
 //formulaire des information de l'utilisateur
 });
+Route::get('/produits/categorie/{categorie_id}', [ProduitController::class, 'categorieProduits'])->name('produits.parCategorie');
+Route::get('/produits2/categorie/{categorie_id}', [ProduitController::class, 'categorieProduits2'])->name('produits.parCategories');
+

@@ -63,16 +63,16 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Authentification réussie
+          
             $user = Auth::user();
     
-            if ($user->role_id === 1) { // Supposons que 1 représente l'admin
+            if ($user->role_id === 1) {
                 return redirect()->intended('/admin');
             } else {
-                return redirect()->intended('/');
+                return redirect()->intended('/produits');
             }
         } else {
-            // Authentification échouée
+           
             return redirect()->back()->withErrors([
                 'email' => 'Les informations de connexion ne sont pas correctes.',
             ]);

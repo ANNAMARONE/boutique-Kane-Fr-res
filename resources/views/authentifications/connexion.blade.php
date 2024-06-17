@@ -1,16 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+  <title>Document</title>
 </head>
 <body>
-
-<div class="container mt-3">
-  <h2>connexion</h2>
+<div class="login_form_wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<!-- login_wrapper -->
+						<div class="login_wrapper">
+						<h2>connexion</h2>
   @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -25,29 +31,43 @@
   <form action="{{Route('login')}}" method="post">
     @csrf
    @Method('POST')
-    <div class="mb-3 mt-3">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="{{old('email')}}">
-      @error('email')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-    </div>
-    <div class="mb-3">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" value="{{old('password')}}">
-      @error('password')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-    </div>
-    <div class="form-check mb-3">
-      <label class="form-check-label">
-      
-        <a href="{{url('/compte')}}">créer un compte</a>
-      </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
-
+							<div class="formsix-pos">
+								<div class="form-group i-email">
+									<input type="email" class="form-control" required="" id="email2" placeholder="Email Address *" name="email" value="{{old('email')}}">
+                  @error('email')
+                  <span class="text-danger">{{$message}}</span>
+                  @enderror
+								</div>
+							</div>
+							<div class="formsix-e">
+								<div class="form-group i-password">
+									<input type="password" class="form-control" required="" id="password2" placeholder="Password *" name="password" value="{{old('password')}}">
+                  @error('password')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+								</div>
+							</div>
+							<div class="login_remember_box">
+								<label class="control control--checkbox">Remember me
+									<input type="checkbox">
+									<span class="control__indicator"></span>
+								</label>
+								<a href="#" class="forget_password">
+									Forgot Password
+								</a>
+							</div>
+							<div class="login_btn_wrapper">
+								<button type="submit" class="btn btn-primary login_btn"> Login </button>
+							</div>
+              </form>
+							<div class="login_message">
+								<p>Don&rsquo;t have an account ? <a href="{{url('/compte')}}"> Sign up </a> </p>
+							</div>
+						</div>
+						<!-- /.login_wrapper-->
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
