@@ -52,8 +52,7 @@
                     <ul class="list-unstyled">
                         @foreach ($categories as $categorie)
                         
-                       
-                        <li><a class="dropdown-item" href="{{Route('Produit. affichagerproduits')}}">{{$categorie->libelle}}</a></li>
+                        <li><a class="dropdown-item" href="{{Route('produits.parCategorie', $categorie->id)}}">{{$categorie->libelle}}</a></li>
                         @endforeach
                     </ul>
                 </div>

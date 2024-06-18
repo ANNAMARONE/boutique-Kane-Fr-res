@@ -40,7 +40,7 @@
             <ul class="list-group">
                 @foreach($commande->produits as $produit)
                     <li class="list-group-item">
-                        {{ $produit->reference }} - {{ $produit->pivot->quantite }} x {{ $produit->prix_unitaire }} FCFA
+                        {{ $produit->designation }} - {{ $produit->pivot->quantite }} x {{ $produit->prix_unitaire }} FCFA
                     </li>
                 @endforeach
             </ul>

@@ -21,8 +21,15 @@ class ProduitController extends Controller
         return redirect('/admin');
     }
     public function affichagerproduits(){
+        $produits = Produit::take(6)->get();
+        $categories=Categorie::all();
+        
+        return view('produits.index',compact('produits','categories'));
+    }
+    public function affichagerproduits2(){
         $produits=Produit::all();
-        return view('produits.index',compact('produits'));
+        $categories=Categorie::all();
+        return view('produits.index2',compact('produits','categories'));
     }
     public function afficherdetail($id){
         $produits=Produit::find($id);
@@ -30,5 +37,18 @@ class ProduitController extends Controller
         $categorie=Categorie::find($id);
         return view('produits.detail',compact('produits','categories','categorie'));
     }
+    public function categorieProduits($categorie_id)
+    {
+        $categories = Categorie::all();
+        $produits = Produit::where('categorie_id', $categorie_id)->get();
+        return view('produits.index', compact('produits', 'categories'));
+    }
+    public function categorieProduits2($categorie_id)
+    {
+        $categories = Categorie::all();
+        $produits = Produit::where('categorie_id', $categorie_id)->get();
+        return view('produits.index', compact('produits', 'categories'));
+    }
+    
     
 }
