@@ -47,21 +47,13 @@
                 @enderror
 								</div>
 							</div>
-							<div class="login_remember_box">
-								<label class="control control--checkbox">Remember me
-									<input type="checkbox">
-									<span class="control__indicator"></span>
-								</label>
-								<a href="#" class="forget_password">
-									Forgot Password
-								</a>
-							</div>
+							
 							<div class="login_btn_wrapper">
-								<button type="submit" class="btn btn-primary login_btn"> Login </button>
+								<button type="submit" class="btn btn-primary login_btn"> se connecter</button>
 							</div>
               </form>
 							<div class="login_message">
-								<p>Don&rsquo;t have an account ? <a href="{{url('/compte')}}"> Sign up </a> </p>
+								<p>Vous&rsquo; n'avez pas de compte ? <a href="{{url('/compte')}}"> s'inscrire </a> </p>
 							</div>
 						</div>
 						<!-- /.login_wrapper-->

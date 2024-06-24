@@ -27,7 +27,7 @@ class ProduitController extends Controller
         return view('produits.index',compact('produits','categories'));
     }
     public function affichagerproduits2(){
-        $produits=Produit::all();
+        $produits=Produit::take(6)->get();
         $categories=Categorie::all();
         return view('produits.index2',compact('produits','categories'));
     }
@@ -47,7 +47,7 @@ class ProduitController extends Controller
     {
         $categories = Categorie::all();
         $produits = Produit::where('categorie_id', $categorie_id)->get();
-        return view('produits.index', compact('produits', 'categories'));
+        return view('produits.index2', compact('produits', 'categories'));
     }
     
     
