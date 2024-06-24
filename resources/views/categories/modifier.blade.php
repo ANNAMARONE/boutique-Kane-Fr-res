@@ -8,25 +8,51 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">gestion produits</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{url('/categorie')}}">gestion categorie</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">gestion commandes</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
+<div class="grid-frame">
+    <div class="grid-block">
+        <div id="sidebar" class="medium-4 grid-block">
+            <div class="logo-container">
+                <a class="logo" href="#">{{Auth::User()->nom}} {{Auth::User()->prenom}}</a>
+            </div>
+            <div>
+                <ul class="primary-nav">
+                <li><a href="#">Dasboard</a></li>
+                    <li><a href="{{url('/categorie')}}">gestion categorie</a></li>
+                    <li><a href="#">gestion des commandes</a></li>
+                    <li><a href="{{url('/admin')}}">Gestion des produits</a></li>
+                    <li><a href="#">Campaigns &amp; Automation</a></li>
+                </ul>
+            </div>
+            <form action="{{url('/deconnexion')}}" method="post">
+                @csrf
+                @method('DELETE')
+    <button class="login-button">deconnection</button>
+    </form>
+    
+        </div>
+        <div id="main" class="grid-block">
+            <div class="grid-block">
+                <div class="menu-group primary">
+<div class="menu-group-left">
+<ul class="menu-bar primary">
+<li><a href="#">Item One</a></li>
+<li><a href="#">Item Too</a></li>
+<li><a href="#">Item Three</a></li>
 </ul>
+</div>
+<div class="menu-group-right">
+<ul class="icon-left primary menu-bar">
+<li><a href="#"><img zf-iconic="" icon="thumb" size="small" class="iconic-color-primary">Item Aye</a></li>
+<li><a href="#"><img zf-iconic="" icon="thumb" size="small" class="iconic-color-primary">Item Bee</a></li>
+</ul>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
 <style>
-  body {
-  font-family: 'Manrope', sans-serif;
-  background:#eee;
-}
+  
 </style>
 <section  id="section1" class="section">
 
@@ -48,21 +74,55 @@
 </section>
 
     
-<script>
-        function showSection(sectionId) {
-            // Cache toutes les sections
-            var sections = document.querySelectorAll('.section');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-
-            // Affiche la section sélectionnée
-            var selectedSection = document.getElementById(sectionId);
-            if (selectedSection) {
-                selectedSection.style.display = 'block';
-            }
+<style>
+  html,
+body,
+.grid-block {
+    height: 100%;
+}
+a{
+  text-decoration: none;
+}
+.section{
+  margin-left: 20%;
+}
+#sidebar {
+    background-color:  #D4E4B7;
+    height: 100%;
+    width: 236px;
+    padding: 20px;
+    position: fixed;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 12px 0 20px 0;
+        border-bottom: 1px solid #3B3B3B;
+        a {
+           
+            &:hover {color: #fff;}   
         }
-    </script>
+    }
+
+}
+.primary-nav a {
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    letter-spacing:.5px;
+    color: #646464;
+    font-weight: 600;
+}
+.secondary-nav a{
+    font-size: 13px;
+}
+.logo {
+    display: block;
+    font-weight: 800;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #3B3B3B
+}
+
+  </style>
 
 </body>
 </html>

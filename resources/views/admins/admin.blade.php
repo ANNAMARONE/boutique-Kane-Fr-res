@@ -8,21 +8,50 @@
     <title>Document</title>
 </head>
 <body>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">gestion produits</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{url('/categorie')}}">gestion categorie</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="">gestion commandes</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul>
+
+        <div class="grid-frame">
+    <div class="grid-block">
+        <div id="sidebar" class="medium-4 grid-block">
+            <div class="logo-container">
+                <a class="logo" href="#">{{Auth::User()->nom}} {{Auth::User()->prenom}}</a>
+            </div>
+            <div>
+                <ul class="primary-nav">
+                <li><a href="#">Dasboard</a></li>
+                    <li><a href="{{url('/categorie')}}">gestion categorie</a></li>
+                    <li><a href="#">gestion des commandes</a></li>
+                    <li><a href="{{url('/admin')}}">Gestion des produits</a></li>
+                    <li><a href="#">Campaigns &amp; Automation</a></li>
+                </ul>
+            </div>
+            <form action="{{url('/deconnexion')}}" method="post">
+                @csrf
+                @method('DELETE')
+    <button class="login-button">deconnection</button>
+    </form>
     
+        </div>
+        <div id="main" class="grid-block">
+            <div class="grid-block">
+                <div class="menu-group primary">
+<div class="menu-group-left">
+<ul class="menu-bar primary">
+<li><a href="#">Item One</a></li>
+<li><a href="#">Item Too</a></li>
+<li><a href="#">Item Three</a></li>
+</ul>
+</div>
+<div class="menu-group-right">
+<ul class="icon-left primary menu-bar">
+<li><a href="#"><img zf-iconic="" icon="thumb" size="small" class="iconic-color-primary">Item Aye</a></li>
+<li><a href="#"><img zf-iconic="" icon="thumb" size="small" class="iconic-color-primary">Item Bee</a></li>
+</ul>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
                 <div class="col-md-8">
@@ -64,51 +93,50 @@
                 </div>
             </div>
         </div>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
-
-body {
-  font-family: 'Manrope', sans-serif;
-  background:#eee;
+<style>
+  html,
+body,
+.grid-block {
+    height: 100%;
 }
 
-.size span {
-  font-size: 11px;
+#sidebar {
+    background-color:  #D4E4B7;
+    height: 100%;
+    width: 236px;
+    padding: 20px;
+    position: fixed;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 12px 0 20px 0;
+        border-bottom: 1px solid #3B3B3B;
+        a {
+           
+            &:hover {color: #fff;}   
+        }
+    }
+
+}
+.primary-nav a {
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    letter-spacing:.5px;
+    color: #646464;
+    font-weight: 600;
+}
+.secondary-nav a{
+    font-size: 13px;
+}
+.logo {
+    display: block;
+    font-weight: 800;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #3B3B3B
 }
 
-.color span {
-  font-size: 11px;
-}
-
-.product-deta {
-  margin-right: 70px;
-}
-
-.gift-card:focus {
-  box-shadow: none;
-}
-
-.pay-button {
-  color: #fff;
-}
-
-.pay-button:hover {
-  color: #fff;
-}
-
-.pay-button:focus {
-  color: #fff;
-  box-shadow: none;
-}
-
-.text-grey {
-  color: #a39f9f;
-}
-
-.qty i {
-  font-size: 11px;
-}
-        </style>
+  </style>
 </body>
 </html>
 
