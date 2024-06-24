@@ -33,7 +33,7 @@
    @Method('POST')
 							<div class="formsix-pos">
 								<div class="form-group i-email">
-									<input type="email" class="form-control" required="" id="email2" placeholder="Email Address *" name="email" value="{{old('email')}}">
+									<input type="email" class="form-control"  placeholder="Email Address *" name="email" value="{{old('email')}}">
                   @error('email')
                   <span class="text-danger">{{$message}}</span>
                   @enderror
@@ -41,7 +41,7 @@
 							</div>
 							<div class="formsix-e">
 								<div class="form-group i-password">
-									<input type="password" class="form-control" required="" id="password2" placeholder="Password *" name="password" value="{{old('password')}}">
+									<input type="password" class="form-control" id="password2" placeholder="Password *" name="password" value="{{old('password')}}">
                   @error('password')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
