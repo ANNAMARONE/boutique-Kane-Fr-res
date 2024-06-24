@@ -71,12 +71,12 @@
             <form action="{{Route('Categorie.suppresion',$categorie->id)}}" style ="display:inline" method="post">
                 @csrf
                 @Method('DELETE')
-            <button type="submit" class="btn btn-danger">suprimer</button>
+            <button type="submit" class="btn btn-primary">modifier</button>
             </form>
         </td>
         <td>
             <a href="{{Route('Categorie.editcategorie',$categorie->id)}}">
-            <button type="submit" class="btn btn-primary">modifier</button>
+            <button type="submit" class="btn btn-danger">suprimer</button>
             </a>
         </td>
       </tr>
