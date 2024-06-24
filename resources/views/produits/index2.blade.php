@@ -67,7 +67,7 @@
         <header  class="bg py-5">
             <div id="header" class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Kane & frése</h1>
+                    <h1 class="display-4 fw-bolder">Kane & fréres</h1>
                     <p class="lead fw-normal text-white-50 mb-0"> spécialisés dans le vente de produits alimentaires</p>
                 </div>
                 <div>
